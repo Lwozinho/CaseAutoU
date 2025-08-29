@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificador Inteligente de Emails</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Classificador Inteligente de Emails</h1>
+            <p>Cole o texto de um email ou faça o upload de um arquivo (.txt, .pdf) para classificá-lo e obter uma sugestão de resposta.</p>
+        </header>
+
+        <main>
+            <form id="email-form">
+                <textarea id="email-text" name="email_text" rows="10" placeholder="Cole o conteúdo do seu email aqui..."></textarea>
+                
+                <div class="file-upload-wrapper">
+                    <label for="email-file">Ou faça upload de um arquivo:</label>
+                    <input type="file" id="email-file" name="email_file" accept=".txt,.pdf">
+                </div>
+
+                <button type="submit" id="submit-button">Processar Email</button>
+            </form>
+
+            <div id="results-area" class="hidden">
+                <hr>
+                <h2>Resultados</h2>
+                <div id="loading" class="hidden">
+                    <div class="spinner"></div>
+                    <p>Analisando...</p>
+                </div>
+                
+                <div id="result-content">
+                    <div class="result-box">
+                        <strong>Categoria:</strong>
+                        <p id="category-result"></p>
+                    </div>
+                    <div class="result-box">
+                        <strong>Resposta Sugerida:</strong>
+                        <p id="response-result"></p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
